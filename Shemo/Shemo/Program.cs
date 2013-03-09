@@ -14,9 +14,22 @@ namespace Shemo
         [STAThread]
         static void Main()
         {
-            InOutPort tst = new InOutPort();
-            InOutPort tst2 = new InOutPort();
-            tst.AddSubscriber(tst2);
+            And2 tst = new And2("1");
+            tst.InitPorts();
+            tst.in1.AcceptSignal(Signal.HIGH);
+            tst.in2.AcceptSignal(Signal.LOW);
+            Scheduler.Instance.Execute();
+            Console.WriteLine(tst.out1.Signal.ToString());
+            Scheduler.Instance.Execute();
+            Console.WriteLine(tst.out1.Signal.ToString());
+            Scheduler.Instance.Execute();
+            Console.WriteLine(tst.out1.Signal.ToString());
+            Scheduler.Instance.Execute();
+            Console.WriteLine(tst.out1.Signal.ToString());
+            Scheduler.Instance.Execute();
+            Console.WriteLine(tst.out1.Signal.ToString());
+            Scheduler.Instance.Execute();
+            Console.WriteLine(tst.out1.Signal.ToString());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

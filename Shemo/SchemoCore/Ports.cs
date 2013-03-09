@@ -34,11 +34,12 @@ namespace SchemoCore
             lock (this)
             {
                 m_signal = s;
-                m_subscribers.BeginInvoke(m_signal, null, null);
+                if (m_subscribers != null)
+                    m_subscribers(m_signal);
             }
         }
 
-        public void AddSubscriber(Port p)
+        public void AddSubscriber(InPort p)
         {
             m_subscribers += p.AcceptSignal;
         }
@@ -77,14 +78,34 @@ namespace SchemoCore
 
     public class OutPort : Port
     {
+        public OutPort(Element elem)
+        {
+            m_signal = Signal.UNDEF;
+            Name = elem.Name + "_In_" + this.GetHashCode().ToString();
+        }
+
+        public OutPort(Element elem, String name)
+        {
+            m_signal = Signal.UNDEF;
+            Name = elem.Name + "_" + name;
+        }
+
+
         public override void AcceptSignal(Signal s)
         {
-
+            lock (this)
+            {
+                m_signal = s;
+                if (m_subscribers != null)
+                    m_subscribers(m_signal);
+            }
         }
 
-        public void AddSubscriber(Port p)
+        public void AddSubscriber(InPort p)
         {
-
+            m_subscribers += p.AcceptSignal;
         }
+
+        private SignalHandler m_subscribers;
     }
 }

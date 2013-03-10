@@ -44,6 +44,11 @@ namespace SchemoCore
             m_subscribers += p.AcceptSignal;
         }
 
+        public void RemoveSubscriber(InPort p)
+        {
+            m_subscribers -= p.AcceptSignal;
+        }
+
         private SignalHandler m_subscribers;
     }
 
@@ -104,6 +109,11 @@ namespace SchemoCore
         public void AddSubscriber(InPort p)
         {
             m_subscribers += p.AcceptSignal;
+        }
+
+        public void RemoveSubscriber(InPort p)
+        {
+            m_subscribers -= p.AcceptSignal;
         }
 
         private SignalHandler m_subscribers;

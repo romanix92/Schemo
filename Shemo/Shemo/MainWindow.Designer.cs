@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelCanvas = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -35,23 +36,27 @@
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripWire = new System.Windows.Forms.ToolStripButton();
             this.toolStripPickGate = new System.Windows.Forms.ToolStripButton();
+            this.contextElement = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
+            this.contextElement.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCanvas
             // 
-            this.panelCanvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCanvas.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelCanvas.Location = new System.Drawing.Point(0, 28);
+            this.panelCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCanvas.Location = new System.Drawing.Point(0, 0);
             this.panelCanvas.Name = "panelCanvas";
-            this.panelCanvas.Size = new System.Drawing.Size(979, 499);
+            this.panelCanvas.Size = new System.Drawing.Size(979, 530);
             this.panelCanvas.TabIndex = 0;
+            this.panelCanvas.Layout += new System.Windows.Forms.LayoutEventHandler(this.panelCanvas_Layout);
             this.panelCanvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.canvasMouseClick);
             this.panelCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvasMouseDown);
             this.panelCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvasMouseMove);
             this.panelCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvasMouseUp);
+            this.panelCanvas.Validated += new System.EventHandler(this.panelCanvas_Validated);
             // 
             // toolStrip1
             // 
@@ -94,7 +99,7 @@
             this.toolStripWire.Name = "toolStripWire";
             this.toolStripWire.Size = new System.Drawing.Size(23, 22);
             this.toolStripWire.Text = "Wire";
-            this.toolStripWire.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripWire.Click += new System.EventHandler(this.toolStripButtonWire_Click);
             // 
             // toolStripPickGate
             // 
@@ -104,7 +109,28 @@
             this.toolStripPickGate.Name = "toolStripPickGate";
             this.toolStripPickGate.Size = new System.Drawing.Size(23, 22);
             this.toolStripPickGate.Text = "Pick gate";
-            this.toolStripPickGate.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.toolStripPickGate.Click += new System.EventHandler(this.toolStripButtonPickGate_Click);
+            // 
+            // contextElement
+            // 
+            this.contextElement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem,
+            this.propertiesToolStripMenuItem});
+            this.contextElement.Name = "contextElement";
+            this.contextElement.Size = new System.Drawing.Size(153, 70);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // propertiesToolStripMenuItem
+            // 
+            this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.propertiesToolStripMenuItem.Text = "Properties";
             // 
             // MainWindow
             // 
@@ -115,8 +141,11 @@
             this.Controls.Add(this.panelCanvas);
             this.Name = "MainWindow";
             this.Text = "Schemo";
+            this.Move += new System.EventHandler(this.MainWindow_Move);
+            this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextElement.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,6 +159,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.ToolStripButton toolStripWire;
         private System.Windows.Forms.ToolStripButton toolStripPickGate;
+        private System.Windows.Forms.ContextMenuStrip contextElement;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
     }
 }
 

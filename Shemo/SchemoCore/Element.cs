@@ -12,6 +12,8 @@ namespace SchemoCore
             Scheduler.Instance.AddEvent(ChangeState, Delay);
         }
 
+        public abstract bool IsMyPort(Port p);
+
         public abstract void ChangeState();
 
         public abstract void InitPorts();
@@ -49,6 +51,11 @@ namespace SchemoCore
                 out1.AcceptSignal(Signal.HIGH);
             else
                 out1.AcceptSignal(Signal.LOW);
+        }
+
+        public override bool IsMyPort(Port p)
+        {
+            return (p == in1 || p == in2 || p == out1);
         }
 
         protected abstract bool Formula(bool first, bool second);

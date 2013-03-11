@@ -10,12 +10,12 @@ namespace Shemo
 {
     interface ICanvasState
     {
-        void MouseClick(Canvas sender, MouseEventArgs e);
-        void MouseDouble(Canvas sender, MouseEventArgs e);
-        void MouseMove(Canvas sender, MouseEventArgs e);
-        void MouseDown(Canvas sender, MouseEventArgs e);
-        void MouseUp(Canvas sender, MouseEventArgs e);
-        void UpdateCanvas(Canvas arg);
+        void MouseClick(ConvasController sender, MouseEventArgs e);
+        void MouseDouble(ConvasController sender, MouseEventArgs e);
+        void MouseMove(ConvasController sender, MouseEventArgs e);
+        void MouseDown(ConvasController sender, MouseEventArgs e);
+        void MouseUp(ConvasController sender, MouseEventArgs e);
+        void UpdateCanvas(ConvasController arg);
     }
 
     class AddingState : ICanvasState
@@ -31,7 +31,7 @@ namespace Shemo
         }
         public Type selected = typeof(Nor2Visible);
 
-        public void MouseClick(Canvas sender, MouseEventArgs e)
+        public void MouseClick(ConvasController sender, MouseEventArgs e)
         {
             Type[] ctorTypes = { typeof(String), typeof(Point) };
             ConstructorInfo ctor = selected.GetConstructor(ctorTypes);
@@ -44,12 +44,12 @@ namespace Shemo
             UpdateCanvas(sender);
         }
 
-        public void MouseDouble(Canvas sender, MouseEventArgs e) { }
-        public void MouseMove(Canvas sender, MouseEventArgs e) { }
-        public void MouseDown(Canvas sender, MouseEventArgs e) { }
-        public void MouseUp(Canvas sender, MouseEventArgs e) { }
+        public void MouseDouble(ConvasController sender, MouseEventArgs e) { }
+        public void MouseMove(ConvasController sender, MouseEventArgs e) { }
+        public void MouseDown(ConvasController sender, MouseEventArgs e) { }
+        public void MouseUp(ConvasController sender, MouseEventArgs e) { }
 
-        public void UpdateCanvas(Canvas arg)
+        public void UpdateCanvas(ConvasController arg)
         {
             Graphics buf_gr = Graphics.FromImage(m_buffer);
             buf_gr.Clear(Color.White);
@@ -76,7 +76,7 @@ namespace Shemo
         }
         public Type selected = typeof(Nor2Visible);
 
-        public void MouseClick(Canvas sender, MouseEventArgs e)
+        public void MouseClick(ConvasController sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -93,13 +93,23 @@ namespace Shemo
             }
             else if (e.Button == MouseButtons.Right)
             {
-                //TODO
+                foreach (VisibleElement el in Circuit.gates)
+                {
+                    if (el.Selected)
+                    {
+                        ContextMenuStrip context = ElementContextProvider.Instance.Menu;
+                        ElementContextProvider.Instance.Selected = el;
+                        Point offset = ElementContextProvider.Instance.offset;
+                        context.Show(offset.X + e.X, offset.Y + e.Y);
+                        break;
+                    }
+                }
             }
         }
 
-        public void MouseDouble(Canvas sender, MouseEventArgs e) { }
+        public void MouseDouble(ConvasController sender, MouseEventArgs e) { }
 
-        public void MouseMove(Canvas sender, MouseEventArgs e)
+        public void MouseMove(ConvasController sender, MouseEventArgs e)
         {
             if (m_mouse_down)
             {
@@ -114,17 +124,17 @@ namespace Shemo
                 m_prev_loc = e.Location;
             }
         }
-        public void MouseDown(Canvas sender, MouseEventArgs e)
+        public void MouseDown(ConvasController sender, MouseEventArgs e)
         {
             m_mouse_down = true;
         }
-        public void MouseUp(Canvas sender, MouseEventArgs e)
+        public void MouseUp(ConvasController sender, MouseEventArgs e)
         {
             m_prev_loc = default(Point);
             m_mouse_down = false;
         }
 
-        public void UpdateCanvas(Canvas arg)
+        public void UpdateCanvas(ConvasController arg)
         {
             Graphics buf_gr = Graphics.FromImage(m_buffer);
             buf_gr.Clear(Color.White);
@@ -153,7 +163,7 @@ namespace Shemo
         }
         public Type selected = typeof(Nor2Visible);
 
-        public void MouseClick(Canvas sender, MouseEventArgs e)
+        public void MouseClick(ConvasController sender, MouseEventArgs e)
         {
             if (m_firstPort == null)
             {
@@ -184,12 +194,12 @@ namespace Shemo
             }
         }
 
-        public void MouseDouble(Canvas sender, MouseEventArgs e) { }
-        public void MouseMove(Canvas sender, MouseEventArgs e) { }
-        public void MouseDown(Canvas sender, MouseEventArgs e) { }
-        public void MouseUp(Canvas sender, MouseEventArgs e) { }
+        public void MouseDouble(ConvasController sender, MouseEventArgs e) { }
+        public void MouseMove(ConvasController sender, MouseEventArgs e) { }
+        public void MouseDown(ConvasController sender, MouseEventArgs e) { }
+        public void MouseUp(ConvasController sender, MouseEventArgs e) { }
 
-        public void UpdateCanvas(Canvas arg)
+        public void UpdateCanvas(ConvasController arg)
         {
             Graphics buf_gr = Graphics.FromImage(m_buffer);
             buf_gr.Clear(Color.White);

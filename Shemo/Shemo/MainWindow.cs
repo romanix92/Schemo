@@ -14,10 +14,11 @@ namespace Shemo
         public MainWindow()
         {
             InitializeComponent();
-            m_canvas = new Canvas(panelCanvas.CreateGraphics());
+            m_canvas = new ConvasController(panelCanvas.CreateGraphics());
+            ElementContextProvider.Instance.Menu = this.contextElement;
         }
 
-        Canvas m_canvas;
+        ConvasController m_canvas;
 
         private void canvasMouseClick(object sender, MouseEventArgs e)
         {
@@ -48,14 +49,50 @@ namespace Shemo
             m_canvas.State = AddingState.Instance;
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void toolStripButtonWire_Click(object sender, EventArgs e)
         {
             m_canvas.State = ConnectingState.Instance;
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void toolStripButtonPickGate_Click(object sender, EventArgs e)
         {
             (new GatePicker()).Show();
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            m_canvas.Graphics = panelCanvas.CreateGraphics();
+            m_canvas.Update();
+        }
+
+        private void panelCanvas_Validated(object sender, EventArgs e)
+        {
+            ElementContextProvider.Instance.offset = this.Location;
+        }
+
+        private void panelCanvas_Layout(object sender, LayoutEventArgs e)
+        {
+            ElementContextProvider.Instance.offset = this.Location;
+        }
+
+        private void MainWindow_Move(object sender, EventArgs e)
+        {
+            ElementContextProvider.Instance.offset = this.Location;
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VisibleElement el = ElementContextProvider.Instance.Selected;
+            IEnumerable<Wire> removedWires = from Wire w in Circuit.wires 
+                                             where (el.Element.IsMyPort(w.inP) || el.Element.IsMyPort(w.outP)) 
+                                             select w;
+            foreach (Wire w in removedWires)
+            {
+                w.outP.RemoveSubscriber(w.inP);
+            }
+            Circuit.all.Remove(el);
+            Circuit.gates.Remove(el);
+            Circuit.wires.RemoveAll((Wire w) => (el.Element.IsMyPort(w.inP) || el.Element.IsMyPort(w.outP)));
         }
     }
 }

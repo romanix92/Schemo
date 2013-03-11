@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Canvas.cs" />
+    <Compile Include="CanvasController.cs" />
     <Compile Include="CanvasState.cs" />
     <Compile Include="Collections.cs" />
+    <Compile Include="ContextMenuProvider.cs" />
     <Compile Include="GatePicker.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -14,14 +14,7 @@ namespace SchemoCore
         {
             get
             {
-                if (m_instance != null)
-                    return m_instance;
-                lock (m_sync)
-                {
-                    if (m_instance == null)
-                        m_instance = new Scheduler();
-                }
-                return m_instance;
+                return m_instance.Value;
             }
         }
 
@@ -66,7 +59,7 @@ namespace SchemoCore
 
         public int Time { get { return m_tick; } }
 
-        private static Scheduler m_instance;
+        private static Lazy<Scheduler> m_instance = new Lazy<Scheduler>(() => (new Scheduler()));
         private static Object m_sync= new Object();
         private int m_tick;
         private List<TimeEvent> m_events;

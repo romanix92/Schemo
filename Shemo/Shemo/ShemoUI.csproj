@@ -50,6 +50,12 @@
     <Compile Include="CanvasState.cs" />
     <Compile Include="Collections.cs" />
     <Compile Include="ContextMenuProvider.cs" />
+    <Compile Include="ElProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ElProp.Designer.cs">
+      <DependentUpon>ElProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="GatePicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,7 +72,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VisibleElement.cs" />
+    <Compile Include="VisibleElementFactory.cs" />
     <Compile Include="Wire.cs" />
+    <EmbeddedResource Include="ElProp.resx">
+      <DependentUpon>ElProp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GatePicker.resx">
       <DependentUpon>GatePicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +92,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

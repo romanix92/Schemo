@@ -29,16 +29,11 @@ namespace Shemo
                 return m_instance;
             }
         }
-        public Type selected = typeof(Nor2Visible);
+        public IVisibleElementFactory selected = new VisibleAnd2Factory();
 
         public void MouseClick(ConvasController sender, MouseEventArgs e)
         {
-            Type[] ctorTypes = { typeof(String), typeof(Point) };
-            ConstructorInfo ctor = selected.GetConstructor(ctorTypes);
-            if (ctor == null)
-                throw (new NotImplementedException("Required constructor not implemented for this type"));
-            object[] prms = { "1", e.Location };
-            VisibleElement el = (VisibleElement)ctor.Invoke(prms);
+            VisibleElement el = selected.newInstance(e.Location);
             Circuit.all.Add(el);
             Circuit.gates.Add(el);
             UpdateCanvas(sender);

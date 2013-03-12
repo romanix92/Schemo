@@ -27,16 +27,16 @@ namespace Shemo
             switch (s)
             {
                 case "And2":
-                    AddingState.Instance.selected = typeof(And2Visible);
+                    AddingState.Instance.selected = new VisibleAnd2Factory();
                     break;
                 case "Or2":
-                    AddingState.Instance.selected = typeof(Or2Visible);
+                    AddingState.Instance.selected = new VisibleOr2Factory();
                     break;
                 case "Nor2":
-                    AddingState.Instance.selected = typeof(Nor2Visible);
+                    AddingState.Instance.selected = new VisibleNor2Factory();
                     break;
                 case "Nand2":
-                    AddingState.Instance.selected = typeof(Nand2Visible);
+                    AddingState.Instance.selected = new VisibleNand2Factory();
                     break; 
                 default:
                     break;

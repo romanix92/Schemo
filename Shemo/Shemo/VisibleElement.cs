@@ -44,6 +44,7 @@ namespace Shemo
         protected Pen defaultPen = new Pen(new SolidBrush(Color.Black));
         protected Pen selectedPen = new Pen(new SolidBrush(Color.Brown), 2);
         protected Font m_font = new Font("Arial", 12.0f);
+        protected Font m_fontSmall = new Font("Arial", 8.0f);
         protected VisibleElement(Point loc)
         {
             m_location = loc;
@@ -146,6 +147,7 @@ namespace Shemo
         {
             base.Draw(gr);
             gr.DrawString("&", m_font, defaultPen.Brush, new PointF(m_location.X + 3, m_location.Y + 3));
+            gr.DrawString(this.Element.Name, m_fontSmall, defaultPen.Brush, new PointF(m_location.X - 2, m_location.Y + 62));
         }
     }
 
@@ -162,6 +164,7 @@ namespace Shemo
         {
             base.Draw(gr);
             gr.DrawString("1", m_font, defaultPen.Brush, new PointF(m_location.X + 3, m_location.Y + 3));
+            gr.DrawString(this.Element.Name, m_fontSmall, defaultPen.Brush, new PointF(m_location.X - 2, m_location.Y + 62));
         }
     }
 
@@ -178,6 +181,7 @@ namespace Shemo
         {
             base.Draw(gr);
             gr.DrawString("1", m_font, defaultPen.Brush, new PointF(m_location.X + 3, m_location.Y + 3));
+            gr.DrawString(this.Element.Name, m_fontSmall, defaultPen.Brush, new PointF(m_location.X - 2, m_location.Y + 62));
             Pen pen = (Selected) ? selectedPen : defaultPen;
             gr.DrawEllipse(pen, new Rectangle(m_location.X + 38, m_location.Y + 28, 4, 4));
         }
@@ -196,6 +200,7 @@ namespace Shemo
         {
             base.Draw(gr);
             gr.DrawString("&", m_font, defaultPen.Brush, new PointF(m_location.X + 3, m_location.Y + 3));
+            gr.DrawString(this.Element.Name, m_fontSmall, defaultPen.Brush, new PointF(m_location.X - 2, m_location.Y + 62));
             Pen pen = (Selected) ? selectedPen : defaultPen;
             gr.DrawEllipse(pen, new Rectangle(m_location.X + 38, m_location.Y + 28, 4, 4));
         }

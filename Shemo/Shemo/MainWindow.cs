@@ -82,17 +82,8 @@ namespace Shemo
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisibleElement el = ElementContextProvider.Instance.Selected;
-            IEnumerable<Wire> removedWires = from Wire w in Circuit.wires 
-                                             where (el.Element.IsMyPort(w.inP) || el.Element.IsMyPort(w.outP)) 
-                                             select w;
-            foreach (Wire w in removedWires)
-            {
-                w.outP.RemoveSubscriber(w.inP);
-            }
-            Circuit.all.Remove(el);
-            Circuit.gates.Remove(el);
-            Circuit.wires.RemoveAll((Wire w) => (el.Element.IsMyPort(w.inP) || el.Element.IsMyPort(w.outP)));
+            m_canvas.DeleteElement();
+            m_canvas.Update();
         }
     }
 }

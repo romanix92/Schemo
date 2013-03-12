@@ -55,7 +55,7 @@ namespace SchemoCore
 
         public override bool IsMyPort(Port p)
         {
-            return (p == in1 || p == in2 || p == out1);
+            return (p.Name == in1.Name || p.Name == in2.Name || p.Name == out1.Name);
         }
 
         protected abstract bool Formula(bool first, bool second);

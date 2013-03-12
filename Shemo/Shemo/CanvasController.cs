@@ -51,6 +51,29 @@ namespace Shemo
             State.UpdateCanvas(this);
         }
 
+        public void DeleteElement()
+        {
+            VisibleElement el = ElementContextProvider.Instance.Selected;
+            IEnumerable<Wire> removedWires = from Wire w in Circuit.wires
+                                             where (el.Element.IsMyPort(w.inP) || el.Element.IsMyPort(w.outP))
+                                             select w;
+            foreach (Wire w in removedWires)
+            {
+                w.outP.RemoveSubscriber(w.inP);
+            }
+            Circuit.all.Remove(el);
+            Circuit.gates.Remove(el);
+            Circuit.wires.RemoveAll((Wire w) => (el.Element.IsMyPort(w.inP) || el.Element.IsMyPort(w.outP)));
+            Circuit.all.RemoveAll((IDrawable dr) => ((dr as Wire != null) ?
+                (bool)(el.Element.IsMyPort((dr as Wire).inP) || el.Element.IsMyPort((dr as Wire).outP))
+                : false));
+        }
+
+        public void ElementProperties()
+        {
+
+        }
+
         public ICanvasState State { get; set; }
         Graphics m_graphics;
     }

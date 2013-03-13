@@ -13,7 +13,9 @@ namespace SchemoCore
         public abstract void AcceptSignal(Signal s);
         public String Name { get; set; }
         public Signal Signal { get { return m_signal; } }
+        public WaveForm WaveForm { get { return m_waveform; } }
         protected Signal m_signal;
+        protected WaveForm m_waveform = new WaveForm();
     }
 
     public class InOutPort : Port
@@ -33,6 +35,7 @@ namespace SchemoCore
         {
             lock (this)
             {
+                m_waveform.Set(s);
                 m_signal = s;
                 if (m_subscribers != null)
                     m_subscribers(m_signal);
@@ -73,6 +76,7 @@ namespace SchemoCore
             lock (this)
             {
                 m_signal = s;
+                m_waveform.Set(s);
                 m_parent.Process();
             }
         }
@@ -100,6 +104,7 @@ namespace SchemoCore
         {
             lock (this)
             {
+                m_waveform.Set(s);
                 m_signal = s;
                 if (m_subscribers != null)
                     m_subscribers(m_signal);

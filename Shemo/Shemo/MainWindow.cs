@@ -90,5 +90,10 @@ namespace Shemo
         {
             (new ElProp()).ShowDialog();
         }
+
+        private void toolStripStart_Click(object sender, EventArgs e)
+        {
+            Simulator.Instance.Simulate(100);
+        }
     }
 }

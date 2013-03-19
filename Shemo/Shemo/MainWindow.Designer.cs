@@ -39,6 +39,7 @@
             this.contextElement = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStart = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.contextElement.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,8 @@
             this.toolStripButtonSelect,
             this.toolStripButtonAdd,
             this.toolStripWire,
-            this.toolStripPickGate});
+            this.toolStripPickGate,
+            this.toolStripStart});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(979, 25);
@@ -117,21 +119,31 @@
             this.deleteToolStripMenuItem,
             this.propertiesToolStripMenuItem});
             this.contextElement.Name = "contextElement";
-            this.contextElement.Size = new System.Drawing.Size(153, 70);
+            this.contextElement.Size = new System.Drawing.Size(128, 48);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // propertiesToolStripMenuItem
             // 
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
+            // 
+            // toolStripStart
+            // 
+            this.toolStripStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStart.Image")));
+            this.toolStripStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStart.Name = "toolStripStart";
+            this.toolStripStart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripStart.Text = "Simulate";
+            this.toolStripStart.Click += new System.EventHandler(this.toolStripStart_Click);
             // 
             // MainWindow
             // 
@@ -163,6 +175,7 @@
         private System.Windows.Forms.ContextMenuStrip contextElement;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripStart;
     }
 }
 

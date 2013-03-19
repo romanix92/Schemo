@@ -47,13 +47,17 @@ namespace SchemoCore
 
         public void Execute()
         {
-            IEnumerable<TimeEvent> current = from ev in m_events 
+            IEnumerable<TimeEvent> currentTmp = from ev in m_events 
                                              where ev.Time == m_tick select ev;
+            List<TimeEvent> current = new List<TimeEvent>();
+            foreach (TimeEvent ev in currentTmp)
+                current.Add(new TimeEvent(ev.Routine, ev.Time));
             foreach (TimeEvent ev in current)
             {
                 ev.Routine();
+                m_events.Remove(ev);
             }
-            m_events.RemoveAll((TimeEvent ev) => ev.Time == m_tick);
+            //m_events.RemoveAll((TimeEvent ev) => ev.Time == m_tick);
             m_tick++;
         }
 

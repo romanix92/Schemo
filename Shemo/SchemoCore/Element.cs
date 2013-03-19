@@ -18,6 +18,8 @@ namespace SchemoCore
 
         public abstract void InitPorts();
 
+        public abstract List<Port> GetPorts();
+
         public int Delay { get; set; }
 
         public String Name { get; set; }
@@ -34,7 +36,7 @@ namespace SchemoCore
         {
             in1 = new InPort(this, "1");
             in2 = new InPort(this, "2");
-            out1 = new OutPort(this, "1");
+            out1 = new OutPort(this, "out");
         }
 
         public override sealed void ChangeState()
@@ -56,6 +58,15 @@ namespace SchemoCore
         public override bool IsMyPort(Port p)
         {
             return (p.Name == in1.Name || p.Name == in2.Name || p.Name == out1.Name);
+        }
+
+        public override List<Port> GetPorts()
+        {
+            List<Port> res = new List<Port>();
+            res.Add(in1);
+            res.Add(in2);
+            res.Add(out1);
+            return res;
         }
 
         protected abstract bool Formula(bool first, bool second);

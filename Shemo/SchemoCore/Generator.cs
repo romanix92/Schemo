@@ -35,6 +35,14 @@ namespace SchemoCore
                 return m_port;
             }
         }
+
+        public override List<Port> GetPorts()
+        {
+            List<Port> res = new List<Port>();
+            res.Add(m_port);
+            return res;
+        }
+
         protected OutPort m_port;
     }
 

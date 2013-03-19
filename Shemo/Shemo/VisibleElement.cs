@@ -15,6 +15,7 @@ namespace Shemo
             port = p;
             position = pos;
         }
+
         public InPort port;
         public Point position;
     }
@@ -28,6 +29,32 @@ namespace Shemo
         }
         public OutPort port;
         public Point position;
+    }
+
+    static class WaveFormDrawer
+    {
+        public static void Draw(WaveForm w, Graphics gr)
+        {
+            int x = 0;
+            for (int i = 0; i < w.Count(); ++i)
+            {
+                Signal s = w.Get(i);
+                switch (s)
+                {
+                    case Signal.LOW:
+                        gr.DrawLine(pen, x, 10, x + 10, 10);
+                        break;
+                    case Signal.HIGH:
+                        gr.DrawLine(pen, x, 0, x + 10, 0);
+                        break;
+                    case Signal.UNDEF:
+                        break;
+                }
+                x += 10;
+            }
+        }
+
+        public static Pen pen = new Pen(new SolidBrush(Color.Black));
     }
 
     abstract class VisibleElement : IDrawable
@@ -113,8 +140,8 @@ namespace Shemo
         {
             Pen pen = (Selected) ? selectedPen : defaultPen;
             gr.DrawRectangle(pen, new Rectangle(m_location, new Size(40, 60)));
-            gr.DrawLine(pen, m_location.X - 10, m_location.Y + 15, m_location.X     , m_location.Y + 15);
-            gr.DrawLine(pen, m_location.X - 10, m_location.Y + 45, m_location.X     , m_location.Y + 45);
+            gr.DrawLine(pen, m_location.X - 10, m_location.Y + 15, m_location.X, m_location.Y + 15);
+            gr.DrawLine(pen, m_location.X - 10, m_location.Y + 45, m_location.X, m_location.Y + 45);
             gr.DrawLine(pen, m_location.X + 40, m_location.Y + 30, m_location.X + 50, m_location.Y + 30);
         }
 
@@ -209,7 +236,7 @@ namespace Shemo
     class ClockGeneratorVisible : VisibleElement
     {
         public ClockGeneratorVisible(String name, int period, Point loc)
-            :base(loc)
+            : base(loc)
         {
             m_gen = new ClockGenerator(name, period);
             m_gen.InitPorts();
@@ -219,6 +246,7 @@ namespace Shemo
         {
             Pen pen = this.Selected ? selectedPen : defaultPen;
             gr.DrawRectangle(pen, new Rectangle(this.Location.X, this.Location.Y, 20, 20));
+            gr.DrawString(this.Element.Name, m_fontSmall, defaultPen.Brush, new PointF(m_location.X - 2, m_location.Y + 22));
         }
 
         public override bool IsMy(Point p)
@@ -240,8 +268,8 @@ namespace Shemo
                 return null;
         }
 
-        public override Element Element 
-        { 
+        public override Element Element
+        {
             get
             {
                 return m_gen;

@@ -94,6 +94,7 @@ namespace Shemo
         private void toolStripStart_Click(object sender, EventArgs e)
         {
             Simulator.Instance.Simulate(100);
+            (new WaveFormsWindow()).Show();
         }
     }
 }

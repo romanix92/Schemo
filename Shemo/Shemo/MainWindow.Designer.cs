@@ -36,18 +36,20 @@
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripWire = new System.Windows.Forms.ToolStripButton();
             this.toolStripPickGate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripStart = new System.Windows.Forms.ToolStripButton();
             this.contextElement = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStart = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.contextElement.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCanvas
             // 
+            this.panelCanvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCanvas.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panelCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCanvas.Location = new System.Drawing.Point(0, 0);
             this.panelCanvas.Name = "panelCanvas";
             this.panelCanvas.Size = new System.Drawing.Size(979, 530);
@@ -113,6 +115,16 @@
             this.toolStripPickGate.Text = "Pick gate";
             this.toolStripPickGate.Click += new System.EventHandler(this.toolStripButtonPickGate_Click);
             // 
+            // toolStripStart
+            // 
+            this.toolStripStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStart.Image")));
+            this.toolStripStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStart.Name = "toolStripStart";
+            this.toolStripStart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripStart.Text = "Simulate";
+            this.toolStripStart.Click += new System.EventHandler(this.toolStripStart_Click);
+            // 
             // contextElement
             // 
             this.contextElement.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -135,16 +147,6 @@
             this.propertiesToolStripMenuItem.Text = "Properties";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
             // 
-            // toolStripStart
-            // 
-            this.toolStripStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStart.Image")));
-            this.toolStripStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripStart.Name = "toolStripStart";
-            this.toolStripStart.Size = new System.Drawing.Size(23, 22);
-            this.toolStripStart.Text = "Simulate";
-            this.toolStripStart.Click += new System.EventHandler(this.toolStripStart_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,7 +168,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panelCanvas;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonSelect;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
@@ -176,6 +177,7 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripStart;
+        private System.Windows.Forms.Panel panelCanvas;
     }
 }
 

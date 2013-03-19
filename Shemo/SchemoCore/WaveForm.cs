@@ -16,7 +16,25 @@ namespace SchemoCore
 
         public Signal Get(int tick)
         {
-            return m_values[tick];
+            int idx = tick;
+            Signal? s = null;
+            while (idx >= 0 && s == null)
+            {
+                try
+                {
+                    s = m_values[tick];
+                }
+                catch (System.Exception)
+                {
+                }
+                idx--;
+            }
+            return (s == null) ? Signal.UNDEF : s.Value;
+        }
+
+        public int Count()
+        {
+            return m_values.Count;
         }
     }
 }

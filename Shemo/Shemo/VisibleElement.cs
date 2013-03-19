@@ -205,5 +205,64 @@ namespace Shemo
             gr.DrawEllipse(pen, new Rectangle(m_location.X + 38, m_location.Y + 28, 4, 4));
         }
     }
+
+    class ClockGeneratorVisible : VisibleElement
+    {
+        public ClockGeneratorVisible(String name, int period, Point loc)
+            :base(loc)
+        {
+            m_gen = new ClockGenerator(name, period);
+            m_gen.InitPorts();
+        }
+
+        public override void Draw(Graphics gr)
+        {
+            Pen pen = this.Selected ? selectedPen : defaultPen;
+            gr.DrawRectangle(pen, new Rectangle(this.Location.X, this.Location.Y, 20, 20));
+        }
+
+        public override bool IsMy(Point p)
+        {
+            Region bound = new Region(new Rectangle(this.Location.X, this.Location.Y, 20, 20));
+            return bound.IsVisible(p);
+        }
+
+        public override VisibleInPort IsInPort(Point p)
+        {
+            return null;
+        }
+
+        public override VisibleOutPort IsOutPort(Point p)
+        {
+            if (IsMy(p))
+                return new VisibleOutPort(m_gen.Port, new Point(Location.X + 20, Location.Y + 10));
+            else
+                return null;
+        }
+
+        public override Element Element 
+        { 
+            get
+            {
+                return m_gen;
+            }
+        }
+
+        public override void Move(Point delta)
+        {
+            m_location.Offset(delta);
+            foreach (Wire w in Circuit.wires)
+            {
+                if (w.outP == m_gen.Port)
+                {
+                    w.p1.Offset(delta);
+                    w.p2 = new Point((w.p1.X + w.p4.X) / 2, w.p1.Y);
+                    w.p3 = new Point((w.p1.X + w.p4.X) / 2, w.p4.Y);
+                }
+            }
+        }
+
+        private ClockGenerator m_gen;
+    }
 }
 

@@ -37,7 +37,10 @@ namespace Shemo
                     break;
                 case "Nand2":
                     AddingState.Instance.selected = new VisibleNand2Factory();
-                    break; 
+                    break;
+                case "ClockGenerator":
+                    AddingState.Instance.selected = new VisibleClockFactory();
+                    break;
                 default:
                     break;
             }

@@ -43,7 +43,6 @@
             this.delayVal.Name = "delayVal";
             this.delayVal.Size = new System.Drawing.Size(103, 20);
             this.delayVal.TabIndex = 0;
-            this.delayVal.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // labelElementTitle
             // 
@@ -80,6 +79,7 @@
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonOk
             // 
@@ -89,6 +89,7 @@
             this.buttonOk.TabIndex = 3;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // ElProp
             // 

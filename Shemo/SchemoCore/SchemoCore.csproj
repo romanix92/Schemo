@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Element.cs" />
     <Compile Include="ElementFactory.cs" />
+    <Compile Include="Generator.cs" />
     <Compile Include="IndexProvider.cs" />
     <Compile Include="Ports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

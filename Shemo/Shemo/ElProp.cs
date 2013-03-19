@@ -14,11 +14,18 @@ namespace Shemo
         public ElProp()
         {
             InitializeComponent();
+            this.labelElementName.Text = ElementContextProvider.Instance.Selected.Element.Name;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            ElementContextProvider.Instance.Selected.Element.Delay = (int)this.delayVal.Value;
+            this.Close();
         }
     }
 }

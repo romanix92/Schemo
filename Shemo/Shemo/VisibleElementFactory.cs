@@ -43,4 +43,12 @@ namespace Shemo
             return new Nor2Visible("Nor2_" + IndexProvider.Instance.Index, p);
         }
     }
+
+    class VisibleClockFactory : IVisibleElementFactory
+    {
+        public VisibleElement newInstance(Point p)
+        {
+            return new ClockGeneratorVisible("Clock_" + IndexProvider.Instance.Index, 10, p);
+        }
+    }
 }

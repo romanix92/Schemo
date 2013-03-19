@@ -40,7 +40,8 @@
             "And2",
             "Or2",
             "Nand2",
-            "Nor2"});
+            "Nor2",
+            "ClockGenerator"});
             this.listGates.Location = new System.Drawing.Point(12, 12);
             this.listGates.Name = "listGates";
             this.listGates.Size = new System.Drawing.Size(260, 225);

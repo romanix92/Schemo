@@ -56,7 +56,7 @@ namespace Shemo
 
         private void toolStripButtonPickGate_Click(object sender, EventArgs e)
         {
-            (new GatePicker()).Show();
+            (new GatePicker()).ShowDialog();
         }
 
         private void MainWindow_Resize(object sender, EventArgs e)
@@ -84,6 +84,11 @@ namespace Shemo
         {
             m_canvas.DeleteElement();
             m_canvas.Update();
+        }
+
+        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new ElProp()).ShowDialog();
         }
     }
 }

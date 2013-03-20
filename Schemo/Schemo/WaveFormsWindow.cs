@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SchemoCore;
 
-namespace Shemo
+namespace Schemo
 {
     public partial class WaveFormsWindow : Form
     {
@@ -19,7 +19,15 @@ namespace Shemo
 
         int count = 0;
         int height = 25;
+        bool first = true;
 
+        class WaveFormPanel : Panel
+        {
+            public WaveForm WaveForm = null;
+
+            public WaveFormPanel()
+                : base() { }
+        }
         private void AddWaveForm(String name, WaveForm w)
         {
             Label title = new Label();
@@ -27,21 +35,26 @@ namespace Shemo
             title.Location = new Point(5, count * height + 5);
             this.Controls.Add(title);
 
-            Panel wave = new Panel();
+            WaveFormPanel wave = new WaveFormPanel();
+            this.Controls.Add(wave);
             wave.BackColor = Color.White;
             wave.Anchor = (AnchorStyles)(AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             wave.Height = 15;
             wave.Width = this.Width - 125;
             wave.Location = new Point(120, count * height + 5);
-            this.Controls.Add(wave);
-
+            wave.WaveForm = w;
+            wave.Paint += DrawWaveForm;
             count++;
+        }
 
-            WaveFormDrawer.Draw(w, wave.CreateGraphics());
+        private void DrawWaveForm(object sender, PaintEventArgs e)
+        {
+            WaveFormDrawer.Draw(((WaveFormPanel)sender).WaveForm, e.Graphics);
         }
 
         private void WaveFormsWindow_Load(object sender, EventArgs e)
         {
+            count = 0;
             foreach (VisibleElement el in Circuit.gates)
             {
                 foreach (Port p in el.Element.GetPorts())
@@ -52,5 +65,7 @@ namespace Shemo
                 }
             }
         }
+
+
     }
 }

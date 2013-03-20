@@ -1,4 +1,4 @@
-﻿namespace Shemo
+﻿namespace Schemo
 {
     partial class MainWindow
     {

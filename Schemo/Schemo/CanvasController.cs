@@ -5,7 +5,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Shemo
+namespace Schemo
 {
     sealed class ConvasController
     {

@@ -11,7 +11,7 @@ namespace SchemoCore
         public void Set(Signal s)
         {
             int tick = Scheduler.Instance.Time;
-            m_values.Add(tick, s);
+            m_values[tick] = s;
         }
 
         public Signal Get(int tick)
@@ -22,7 +22,7 @@ namespace SchemoCore
             {
                 try
                 {
-                    s = m_values[tick];
+                    s = m_values[idx];
                 }
                 catch (System.Exception)
                 {
@@ -34,7 +34,7 @@ namespace SchemoCore
 
         public int Count()
         {
-            return m_values.Count;
+            return 100;// m_values.Count;
         }
     }
 }

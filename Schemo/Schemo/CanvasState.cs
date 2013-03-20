@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Drawing;
 
-namespace Shemo
+namespace Schemo
 {
     interface ICanvasState
     {
@@ -184,6 +184,7 @@ namespace Shemo
                         break;
                     }
                 }
+                m_firstPort.port.AddSubscriber(second.port);
                 m_firstPort = null;
                 UpdateCanvas(sender);
             }

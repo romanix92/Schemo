@@ -5,7 +5,7 @@ using System.Text;
 using System.Drawing;
 using SchemoCore;
 
-namespace Shemo
+namespace Schemo
 {
     interface IVisibleElementFactory
     {

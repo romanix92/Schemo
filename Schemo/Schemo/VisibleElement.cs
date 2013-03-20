@@ -6,7 +6,7 @@ using System.Drawing;
 
 using SchemoCore;
 
-namespace Shemo
+namespace Schemo
 {
     class VisibleInPort
     {
@@ -45,7 +45,7 @@ namespace Shemo
                         gr.DrawLine(pen, x, 10, x + 10, 10);
                         break;
                     case Signal.HIGH:
-                        gr.DrawLine(pen, x, 0, x + 10, 0);
+                        gr.DrawLine(pen, x, 3, x + 10, 3);
                         break;
                     case Signal.UNDEF:
                         break;
@@ -54,7 +54,7 @@ namespace Shemo
             }
         }
 
-        public static Pen pen = new Pen(new SolidBrush(Color.Black));
+        public static Pen pen = new Pen(new SolidBrush(Color.Black), 2);
     }
 
     abstract class VisibleElement : IDrawable

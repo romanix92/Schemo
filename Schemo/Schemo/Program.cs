@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SchemoCore;
 
-namespace Shemo
+namespace Schemo
 {
     static class Program
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Shemo.Properties
+namespace Schemo.Properties
 {
 
 

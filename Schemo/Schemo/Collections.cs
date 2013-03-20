@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using SchemoCore;
 
-namespace Shemo
+namespace Schemo
 {
     static class Circuit
     {

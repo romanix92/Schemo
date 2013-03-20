@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Shemo
+namespace Schemo
 {
     public partial class ElProp : Form
     {

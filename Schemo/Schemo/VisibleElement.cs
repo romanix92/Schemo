@@ -36,13 +36,23 @@ namespace Schemo
         public static void Draw(WaveForm w, Graphics gr)
         {
             int x = 0;
-            for (int i = 0; i < w.Count(); ++i)
+            Signal? prev = null;
+            for (int i = 0; i < Simulator.Instance.Duration(); ++i)
             {
-                Signal s = w.Get(i);
+                Signal? s = w.Get(i);
+                if (s.HasValue)
+                {
+                    if (prev != Signal.UNDEF && prev.HasValue && prev != s)
+                        gr.DrawLine(pen, x, 20, x, 3);
+                    prev = s;
+                }
+                else
+                    s = prev;
+
                 switch (s)
                 {
                     case Signal.LOW:
-                        gr.DrawLine(pen, x, 10, x + 10, 10);
+                        gr.DrawLine(pen, x, 20, x + 10, 20);
                         break;
                     case Signal.HIGH:
                         gr.DrawLine(pen, x, 3, x + 10, 3);
@@ -54,7 +64,7 @@ namespace Schemo
             }
         }
 
-        public static Pen pen = new Pen(new SolidBrush(Color.Black), 2);
+        public static Pen pen = new Pen(new SolidBrush(Color.Blue), 1.5f);
     }
 
     abstract class VisibleElement : IDrawable

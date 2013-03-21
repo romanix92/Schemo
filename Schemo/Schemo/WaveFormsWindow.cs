@@ -32,14 +32,14 @@ namespace Schemo
         {
             Label title = new Label();
             title.Text = name;
-            title.Location = new Point(5, count * height + 5);
+            title.Location = new Point(5, count * height + 10);
             this.Controls.Add(title);
 
             WaveFormPanel wave = new WaveFormPanel();
             this.Controls.Add(wave);
             wave.BackColor = Color.White;
             wave.Anchor = (AnchorStyles)(AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
-            wave.Height = 15;
+            wave.Height = 22;
             wave.Width = this.Width - 125;
             wave.Location = new Point(120, count * height + 5);
             wave.WaveForm = w;

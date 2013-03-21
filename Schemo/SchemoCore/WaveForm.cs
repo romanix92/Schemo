@@ -14,27 +14,34 @@ namespace SchemoCore
             m_values[tick] = s;
         }
 
-        public Signal Get(int tick)
+        public Signal? Get(int tick)
         {
-            int idx = tick;
             Signal? s = null;
-            while (idx >= 0 && s == null)
+            try
             {
-                try
-                {
-                    s = m_values[idx];
-                }
-                catch (System.Exception)
-                {
-                }
-                idx--;
+                s = m_values[tick];
             }
-            return (s == null) ? Signal.UNDEF : s.Value;
+            catch (System.Exception)
+            {
+                return null;
+            }
+            return s;
+        }
+
+        public void GetNext(int current, out int time, out Signal? s)
+        {
+            time = (from key in m_values.Keys where key > current select key).Min();
+            s = m_values[time];
         }
 
         public int Count()
         {
-            return 100;// m_values.Count;
+            return m_values.Keys.Max();
+        }
+
+        public void Clear()
+        {
+            m_values.Clear();
         }
     }
 }

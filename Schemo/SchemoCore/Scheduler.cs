@@ -55,16 +55,20 @@ namespace SchemoCore
             foreach (TimeEvent ev in current)
             {
                 ev.Routine();
-                m_events.Remove(ev);
             }
-            //m_events.RemoveAll((TimeEvent ev) => ev.Time == m_tick);
+            m_events.RemoveAll((TimeEvent ev) => ev.Time == m_tick);
             m_tick++;
+        }
+
+        public void Reset()
+        {
+            m_events.Clear();
+            m_tick = 0;
         }
 
         public int Time { get { return m_tick; } }
 
         private static Lazy<Scheduler> m_instance = new Lazy<Scheduler>(() => (new Scheduler()));
-        private static Object m_sync= new Object();
         private int m_tick;
         private List<TimeEvent> m_events;
     }

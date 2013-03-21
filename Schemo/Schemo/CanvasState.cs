@@ -181,10 +181,10 @@ namespace Schemo
                             m_firstPort.port, second.port);
                         Circuit.wires.Add(w);
                         Circuit.all.Add(w);
+                        m_firstPort.port.AddSubscriber(second.port);
                         break;
                     }
                 }
-                m_firstPort.port.AddSubscriber(second.port);
                 m_firstPort = null;
                 UpdateCanvas(sender);
             }

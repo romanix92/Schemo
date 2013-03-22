@@ -52,18 +52,19 @@ namespace Schemo
                 switch (s)
                 {
                     case Signal.LOW:
-                        gr.DrawLine(pen, x, 20, x + 10, 20);
+                        gr.DrawLine(pen, x, 20, x + pixPerTick, 20);
                         break;
                     case Signal.HIGH:
-                        gr.DrawLine(pen, x, 3, x + 10, 3);
+                        gr.DrawLine(pen, x, 3, x + pixPerTick, 3);
                         break;
                     case Signal.UNDEF:
                         break;
                 }
-                x += 10;
+                x += pixPerTick;
             }
         }
 
+        public static int pixPerTick = 10;
         public static Pen pen = new Pen(new SolidBrush(Color.Blue), 1.5f);
     }
 
@@ -134,14 +135,12 @@ namespace Schemo
                 if (w.inP == m_element.in1 || w.inP == m_element.in2)
                 {
                     w.p4.Offset(delta);
-                    w.p2 = new Point((w.p1.X + w.p4.X) / 2, w.p1.Y);
-                    w.p3 = new Point((w.p1.X + w.p4.X) / 2, w.p4.Y);
+                    w.FindPath(w.p1, w.p4);
                 }
                 if (w.outP == m_element.out1)
                 {
                     w.p1.Offset(delta);
-                    w.p2 = new Point((w.p1.X + w.p4.X) / 2, w.p1.Y);
-                    w.p3 = new Point((w.p1.X + w.p4.X) / 2, w.p4.Y);
+                    w.FindPath(w.p1, w.p4);
                 }
             }
         }

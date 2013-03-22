@@ -19,7 +19,6 @@ namespace Schemo
 
         int count = 0;
         int height = 25;
-        bool first = true;
 
         class WaveFormPanel : Panel
         {
@@ -28,11 +27,12 @@ namespace Schemo
             public WaveFormPanel()
                 : base() { }
         }
+
         private void AddWaveForm(String name, WaveForm w)
         {
             Label title = new Label();
             title.Text = name;
-            title.Location = new Point(5, count * height + 10);
+            title.Location = new Point(5, count * height + 35);
             this.Controls.Add(title);
 
             WaveFormPanel wave = new WaveFormPanel();
@@ -41,7 +41,7 @@ namespace Schemo
             wave.Anchor = (AnchorStyles)(AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top);
             wave.Height = 22;
             wave.Width = this.Width - 125;
-            wave.Location = new Point(120, count * height + 5);
+            wave.Location = new Point(120, count * height + 30);
             wave.WaveForm = w;
             wave.Paint += DrawWaveForm;
             count++;
@@ -50,6 +50,11 @@ namespace Schemo
         private void DrawWaveForm(object sender, PaintEventArgs e)
         {
             WaveFormDrawer.Draw(((WaveFormPanel)sender).WaveForm, e.Graphics);
+        }
+
+        private void DrawRuler()
+        {
+            Graphics gr = this.CreateGraphics();
         }
 
         private void WaveFormsWindow_Load(object sender, EventArgs e)

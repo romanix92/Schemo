@@ -71,6 +71,12 @@
     <Compile Include="IDrawable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulationSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulationSettings.Designer.cs">
+      <DependentUpon>SimulationSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Simulator.cs" />
     <Compile Include="VisibleElement.cs" />
     <Compile Include="VisibleElementFactory.cs" />
@@ -98,7 +104,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SimulationSettings.resx">
+      <DependentUpon>SimulationSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaveFormsWindow.resx">
       <DependentUpon>WaveFormsWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +127,9 @@
       <Project>{D00936C6-7F8E-4882-9D51-A69E9FB6AD36}</Project>
       <Name>SchemoCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1363967989_12.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

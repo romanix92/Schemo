@@ -93,9 +93,7 @@ namespace Schemo
 
         private void toolStripStart_Click(object sender, EventArgs e)
         {
-            Simulator.Instance.Reset();
-            Simulator.Instance.Simulate(100);
-            (new WaveFormsWindow()).Show();
+            (new SimulationSettings()).ShowDialog();
         }
     }
 }

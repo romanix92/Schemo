@@ -32,23 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelCanvas = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.contextElement = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonSelect = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripWire = new System.Windows.Forms.ToolStripButton();
             this.toolStripPickGate = new System.Windows.Forms.ToolStripButton();
             this.toolStripStart = new System.Windows.Forms.ToolStripButton();
-            this.contextElement = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.contextElement.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCanvas
             // 
-            this.panelCanvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelCanvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelCanvas.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelCanvas.Location = new System.Drawing.Point(0, 0);
             this.panelCanvas.Name = "panelCanvas";
@@ -72,64 +72,9 @@
             this.toolStripStart});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(979, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(979, 38);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonSelect
-            // 
-            this.toolStripButtonSelect.AutoSize = false;
-            this.toolStripButtonSelect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSelect.Image = global::Shemo.Properties.Resources._1363967989_12;
-            this.toolStripButtonSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSelect.Name = "toolStripButtonSelect";
-            this.toolStripButtonSelect.Size = new System.Drawing.Size(32, 32);
-            this.toolStripButtonSelect.Text = "Select";
-            this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButtonSelect_Click);
-            // 
-            // toolStripButtonAdd
-            // 
-            this.toolStripButtonAdd.AutoSize = false;
-            this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
-            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(32, 32);
-            this.toolStripButtonAdd.Text = "Add";
-            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
-            // 
-            // toolStripWire
-            // 
-            this.toolStripWire.AutoSize = false;
-            this.toolStripWire.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripWire.Image = ((System.Drawing.Image)(resources.GetObject("toolStripWire.Image")));
-            this.toolStripWire.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripWire.Name = "toolStripWire";
-            this.toolStripWire.Size = new System.Drawing.Size(32, 32);
-            this.toolStripWire.Text = "Wire";
-            this.toolStripWire.Click += new System.EventHandler(this.toolStripButtonWire_Click);
-            // 
-            // toolStripPickGate
-            // 
-            this.toolStripPickGate.AutoSize = false;
-            this.toolStripPickGate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripPickGate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripPickGate.Image")));
-            this.toolStripPickGate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripPickGate.Name = "toolStripPickGate";
-            this.toolStripPickGate.Size = new System.Drawing.Size(32, 32);
-            this.toolStripPickGate.Text = "Pick gate";
-            this.toolStripPickGate.Click += new System.EventHandler(this.toolStripButtonPickGate_Click);
-            // 
-            // toolStripStart
-            // 
-            this.toolStripStart.AutoSize = false;
-            this.toolStripStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStart.Image")));
-            this.toolStripStart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripStart.Name = "toolStripStart";
-            this.toolStripStart.Size = new System.Drawing.Size(32, 32);
-            this.toolStripStart.Text = "Simulate";
-            this.toolStripStart.Click += new System.EventHandler(this.toolStripStart_Click);
             // 
             // contextElement
             // 
@@ -152,6 +97,66 @@
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
+            // 
+            // toolStripButtonSelect
+            // 
+            this.toolStripButtonSelect.AutoSize = false;
+            this.toolStripButtonSelect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSelect.Image = global::Shemo.Properties.Resources._1363967989_121;
+            this.toolStripButtonSelect.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSelect.Name = "toolStripButtonSelect";
+            this.toolStripButtonSelect.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButtonSelect.Text = "Select";
+            this.toolStripButtonSelect.Click += new System.EventHandler(this.toolStripButtonSelect_Click);
+            // 
+            // toolStripButtonAdd
+            // 
+            this.toolStripButtonAdd.AutoSize = false;
+            this.toolStripButtonAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAdd.Image")));
+            this.toolStripButtonAdd.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
+            this.toolStripButtonAdd.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButtonAdd.Text = "Add";
+            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
+            // 
+            // toolStripWire
+            // 
+            this.toolStripWire.AutoSize = false;
+            this.toolStripWire.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripWire.Image = ((System.Drawing.Image)(resources.GetObject("toolStripWire.Image")));
+            this.toolStripWire.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripWire.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripWire.Name = "toolStripWire";
+            this.toolStripWire.Size = new System.Drawing.Size(36, 36);
+            this.toolStripWire.Text = "Wire";
+            this.toolStripWire.Click += new System.EventHandler(this.toolStripButtonWire_Click);
+            // 
+            // toolStripPickGate
+            // 
+            this.toolStripPickGate.AutoSize = false;
+            this.toolStripPickGate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripPickGate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripPickGate.Image")));
+            this.toolStripPickGate.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripPickGate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripPickGate.Name = "toolStripPickGate";
+            this.toolStripPickGate.Size = new System.Drawing.Size(36, 36);
+            this.toolStripPickGate.Text = "Pick gate";
+            this.toolStripPickGate.Click += new System.EventHandler(this.toolStripButtonPickGate_Click);
+            // 
+            // toolStripStart
+            // 
+            this.toolStripStart.AutoSize = false;
+            this.toolStripStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStart.Image")));
+            this.toolStripStart.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStart.Name = "toolStripStart";
+            this.toolStripStart.Size = new System.Drawing.Size(36, 36);
+            this.toolStripStart.Text = "Simulate";
+            this.toolStripStart.Click += new System.EventHandler(this.toolStripStart_Click);
             // 
             // MainWindow
             // 

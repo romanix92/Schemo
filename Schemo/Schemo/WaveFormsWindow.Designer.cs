@@ -34,7 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1265, 209);
+            this.DoubleBuffered = true;
             this.Name = "WaveFormsWindow";
             this.Text = "WaveFormsWindow";
             this.Load += new System.EventHandler(this.WaveFormsWindow_Load);

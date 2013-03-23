@@ -129,13 +129,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1363967989_12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cursor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1363967989_121.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

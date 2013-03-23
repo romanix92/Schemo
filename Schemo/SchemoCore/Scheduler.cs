@@ -42,6 +42,8 @@ namespace SchemoCore
         {
             if (delay < 0)
                 throw ( new ArgumentException() );
+            //var oldEvs = from TimeEvent ev in m_events where ev.Routine == action && ev.Time == m_tick + delay select ev;
+            m_events.RemoveAll((TimeEvent ev) => (ev.Routine == action && ev.Time == m_tick + delay));
             m_events.Add(new TimeEvent(action, m_tick + delay));
         }
 

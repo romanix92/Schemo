@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace Schemo
 {
-    sealed class ConvasController
+    sealed class CanvasController
     {
-        public ConvasController(Graphics gr)
+        public CanvasController(Graphics gr)
         {
             m_graphics = gr;
             State = AddingState.Instance;

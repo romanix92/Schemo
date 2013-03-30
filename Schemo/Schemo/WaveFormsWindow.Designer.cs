@@ -40,6 +40,8 @@
             this.Name = "WaveFormsWindow";
             this.Text = "WaveFormsWindow";
             this.Load += new System.EventHandler(this.WaveFormsWindow_Load);
+            this.Shown += new System.EventHandler(this.WaveFormsWindow_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.WaveFormsWindow_Paint);
             this.ResumeLayout(false);
 
         }

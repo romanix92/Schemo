@@ -14,11 +14,11 @@ namespace Schemo
         public MainWindow()
         {
             InitializeComponent();
-            m_canvas = new ConvasController(panelCanvas.CreateGraphics());
+            m_canvas = new CanvasController(panelCanvas.CreateGraphics());
             ElementContextProvider.Instance.Menu = this.contextElement;
         }
 
-        ConvasController m_canvas;
+        CanvasController m_canvas;
 
         private void canvasMouseClick(object sender, MouseEventArgs e)
         {

@@ -10,12 +10,12 @@ namespace Schemo
 {
     interface ICanvasState
     {
-        void MouseClick(ConvasController sender, MouseEventArgs e);
-        void MouseDouble(ConvasController sender, MouseEventArgs e);
-        void MouseMove(ConvasController sender, MouseEventArgs e);
-        void MouseDown(ConvasController sender, MouseEventArgs e);
-        void MouseUp(ConvasController sender, MouseEventArgs e);
-        void UpdateCanvas(ConvasController arg);
+        void MouseClick(CanvasController sender, MouseEventArgs e);
+        void MouseDouble(CanvasController sender, MouseEventArgs e);
+        void MouseMove(CanvasController sender, MouseEventArgs e);
+        void MouseDown(CanvasController sender, MouseEventArgs e);
+        void MouseUp(CanvasController sender, MouseEventArgs e);
+        void UpdateCanvas(CanvasController arg);
     }
 
     class AddingState : ICanvasState
@@ -31,7 +31,7 @@ namespace Schemo
         }
         public IVisibleElementFactory selected = new VisibleAnd2Factory();
 
-        public void MouseClick(ConvasController sender, MouseEventArgs e)
+        public void MouseClick(CanvasController sender, MouseEventArgs e)
         {
             VisibleElement el = selected.newInstance(e.Location);
             Circuit.all.Add(el);
@@ -39,12 +39,12 @@ namespace Schemo
             UpdateCanvas(sender);
         }
 
-        public void MouseDouble(ConvasController sender, MouseEventArgs e) { }
-        public void MouseMove(ConvasController sender, MouseEventArgs e) { }
-        public void MouseDown(ConvasController sender, MouseEventArgs e) { }
-        public void MouseUp(ConvasController sender, MouseEventArgs e) { }
+        public void MouseDouble(CanvasController sender, MouseEventArgs e) { }
+        public void MouseMove(CanvasController sender, MouseEventArgs e) { }
+        public void MouseDown(CanvasController sender, MouseEventArgs e) { }
+        public void MouseUp(CanvasController sender, MouseEventArgs e) { }
 
-        public void UpdateCanvas(ConvasController arg)
+        public void UpdateCanvas(CanvasController arg)
         {
             Graphics buf_gr = Graphics.FromImage(m_buffer);
             buf_gr.Clear(Color.White);
@@ -71,7 +71,7 @@ namespace Schemo
         }
         public Type selected = typeof(Nor2Visible);
 
-        public void MouseClick(ConvasController sender, MouseEventArgs e)
+        public void MouseClick(CanvasController sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -102,9 +102,9 @@ namespace Schemo
             }
         }
 
-        public void MouseDouble(ConvasController sender, MouseEventArgs e) { }
+        public void MouseDouble(CanvasController sender, MouseEventArgs e) { }
 
-        public void MouseMove(ConvasController sender, MouseEventArgs e)
+        public void MouseMove(CanvasController sender, MouseEventArgs e)
         {
             if (m_mouse_down)
             {
@@ -119,17 +119,17 @@ namespace Schemo
                 m_prev_loc = e.Location;
             }
         }
-        public void MouseDown(ConvasController sender, MouseEventArgs e)
+        public void MouseDown(CanvasController sender, MouseEventArgs e)
         {
             m_mouse_down = true;
         }
-        public void MouseUp(ConvasController sender, MouseEventArgs e)
+        public void MouseUp(CanvasController sender, MouseEventArgs e)
         {
             m_prev_loc = default(Point);
             m_mouse_down = false;
         }
 
-        public void UpdateCanvas(ConvasController arg)
+        public void UpdateCanvas(CanvasController arg)
         {
             Graphics buf_gr = Graphics.FromImage(m_buffer);
             buf_gr.Clear(Color.White);
@@ -158,7 +158,7 @@ namespace Schemo
         }
         public Type selected = typeof(Nor2Visible);
 
-        public void MouseClick(ConvasController sender, MouseEventArgs e)
+        public void MouseClick(CanvasController sender, MouseEventArgs e)
         {
             if (m_firstPort == null)
             {
@@ -190,12 +190,12 @@ namespace Schemo
             }
         }
 
-        public void MouseDouble(ConvasController sender, MouseEventArgs e) { }
-        public void MouseMove(ConvasController sender, MouseEventArgs e) { }
-        public void MouseDown(ConvasController sender, MouseEventArgs e) { }
-        public void MouseUp(ConvasController sender, MouseEventArgs e) { }
+        public void MouseDouble(CanvasController sender, MouseEventArgs e) { }
+        public void MouseMove(CanvasController sender, MouseEventArgs e) { }
+        public void MouseDown(CanvasController sender, MouseEventArgs e) { }
+        public void MouseUp(CanvasController sender, MouseEventArgs e) { }
 
-        public void UpdateCanvas(ConvasController arg)
+        public void UpdateCanvas(CanvasController arg)
         {
             Graphics buf_gr = Graphics.FromImage(m_buffer);
             buf_gr.Clear(Color.White);

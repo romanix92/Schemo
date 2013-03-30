@@ -52,11 +52,6 @@ namespace Schemo
             WaveFormDrawer.Draw(((WaveFormPanel)sender).WaveForm, e.Graphics);
         }
 
-        private void DrawRuler()
-        {
-            Graphics gr = this.CreateGraphics();
-        }
-
         private void WaveFormsWindow_Load(object sender, EventArgs e)
         {
             count = 0;
@@ -69,6 +64,20 @@ namespace Schemo
                     AddWaveForm(name, w);
                 }
             }
+        }
+
+        private void WaveFormsWindow_Paint(object sender, PaintEventArgs e)
+        {
+            Font font = new Font("Arial", 12.0f);
+            Brush brush = new SolidBrush(Color.Black);
+            for (int i = 0; i <= Simulator.Instance.Duration(); i += 10)
+            {
+                e.Graphics.DrawString(i.ToString(), font, brush, new Point(115 + i * WaveFormDrawer.pixPerTick, 10));
+            }
+        }
+
+        private void WaveFormsWindow_Shown(object sender, EventArgs e)
+        {
         }
 
 
